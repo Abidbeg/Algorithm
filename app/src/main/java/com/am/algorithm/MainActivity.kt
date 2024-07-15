@@ -48,13 +48,45 @@ fun twoSum(nums: IntArray, target: Int): IntArray {
     return resultArray
 }
 
+fun isPalindrome(x: Int): Boolean {
+    var result = true
+    var data = x.toString()
+    var i = 0
+    var j = x.toString().length - 1
+
+    while (i <= j) {
+        if (data[i] != data[j]) {
+            result = false
+            break
+        }
+        i++
+        j--
+    }
+    return result
+}
+
+fun longestCommonPrefix(strs: Array<String>): String {
+    if (strs.size == 0) return ""
+    var res = ""
+    for (j in 0 until strs[0].length) {
+        val c = strs[0][j]
+        for (i in 1 until strs.size) {
+            if (j >= strs[i].length || strs[i][j] != c) {
+                return res
+            }
+        }
+        res += c
+    }
+    return res
+}
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    val nums: IntArray = intArrayOf(3, 3)
+    val strs = arrayOf("flower", "flow", "flight")
     val targer = 6
     Text(
-        text = "Hello ${twoSum(nums, targer)}",
+        text = "hey ${longestCommonPrefix(strs)}",
         modifier = modifier
     )
 
