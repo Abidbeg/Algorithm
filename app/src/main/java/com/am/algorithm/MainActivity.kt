@@ -13,6 +13,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.am.algorithm.ui.theme.AlgorithmTheme
 import org.w3c.dom.Node
+import org.w3c.dom.NodeList
+import java.util.Stack
 
 class MainActivity : ComponentActivity() {
 
@@ -80,6 +82,45 @@ fun longestCommonPrefix(strs: Array<String>): String {
     return res
 }
 
+fun isValid(s: String): Boolean {
+    val stack = Stack<Char>()
+    val range = (1..2)
+    s.forEach { c ->
+        when {
+            stack.empty() -> stack.push(c)
+            (c - stack.peek()) in range -> stack.pop()
+            else -> stack.push(c)
+        }
+    }
+    return stack.empty()
+}
+
+fun mergeTwoLists(l1: ListNode?, l2: ListNode?): ListNode? {
+    val result = ListNode(0)
+    var current = result
+
+    var node1 = l1
+    var node2 = l2
+    while (node1 != null || node2 != null) {
+        if (node1 == null) {
+            current.next = node2
+            break
+        }
+        if (node2 == null) {
+            current.next = node1
+            break
+        }
+        if (node1.`val` < node2.`val`) {
+            current.next = node1
+            node1 = node1.next
+        } else {
+            current.next = node2
+            node2 = node2.next
+        }
+        current = current.next!!
+    }
+    return result?.next
+}
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
@@ -97,5 +138,24 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 fun GreetingPreview() {
     AlgorithmTheme {
         Greeting("Android")
+    }
+}
+
+class ListNode constructor(var value: Int = -1, var next: ListNode? = null) {
+    override fun toString(): String {
+        return "$value -> ${next.toString()}"
+    }
+
+    companion object {
+        // a help function to generate a linked list with given values quickly, for test purpose only
+        fun quickList(nodes: List<Int>): ListNode {
+            val dummy = ListNode()
+            nodes.reversed().forEach({
+                val temp = ListNode(it)
+                temp.next = dummy.next
+                dummy.next = temp
+            })
+            return dummy.next!!
+        }
     }
 }
