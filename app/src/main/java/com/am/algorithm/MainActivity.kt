@@ -110,24 +110,45 @@ fun mergeTwoLists(l1: ListNode?, l2: ListNode?): ListNode? {
             current.next = node1
             break
         }
-        if (node1.`val` < node2.`val`) {
-            current.next = node1
-            node1 = node1.next
-        } else {
-            current.next = node2
-            node2 = node2.next
-        }
+
         current = current.next!!
     }
     return result?.next
 }
 
+fun removeDuplicates(nums: IntArray): Int {
+    var count = 0
+
+    for (i in nums.indices) {
+        if (i < nums.size - 1 && nums[i] == nums[i + 1]) {
+            continue
+        }
+        nums[count] = nums[i]
+        count++
+    }
+
+    return count
+}
+
+fun removeElement(nums: IntArray, strVal: Int): Int {
+    var result = IntArray(nums.size)
+  /*  for (i in nums.indices) {
+        if (nums[i] == strVal) {
+
+            result[i] = nums[i]
+
+        }
+    }*/
+    nums.drop(strVal)
+    return nums.size
+}
+
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    val strs = arrayOf("flower", "flow", "flight")
+    val strs = intArrayOf(3, 2, 2, 3)
     val targer = 6
     Text(
-        text = "hey ${longestCommonPrefix(strs)}",
+        text = "hey ${removeElement(strs, 3)}",
         modifier = modifier
     )
 
