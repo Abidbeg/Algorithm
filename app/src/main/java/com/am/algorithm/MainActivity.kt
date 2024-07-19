@@ -131,24 +131,21 @@ fun removeDuplicates(nums: IntArray): Int {
 }
 
 fun removeElement(nums: IntArray, strVal: Int): Int {
-    var result = IntArray(nums.size)
-  /*  for (i in nums.indices) {
-        if (nums[i] == strVal) {
-
-            result[i] = nums[i]
-
+    var j = 0
+    for (i in nums) {
+        if (i != strVal) {
+            nums[j++]=i
         }
-    }*/
-    nums.drop(strVal)
-    return nums.size
+    }
+    return j
 }
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    val strs = intArrayOf(3, 2, 2, 3)
+    val strs = intArrayOf(0,1,2,2,3,0,4,2)
     val targer = 6
     Text(
-        text = "hey ${removeElement(strs, 3)}",
+        text = "hey ${removeElement(strs, 2)}",
         modifier = modifier
     )
 
