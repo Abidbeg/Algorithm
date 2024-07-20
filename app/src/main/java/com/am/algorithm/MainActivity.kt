@@ -134,18 +134,45 @@ fun removeElement(nums: IntArray, strVal: Int): Int {
     var j = 0
     for (i in nums) {
         if (i != strVal) {
-            nums[j++]=i
+            nums[j++] = i
         }
     }
     return j
 }
 
+fun strStr(haystack: String, needle: String): Int {
+    if ("" == needle) {
+        return 0
+    }
+    var len1 = haystack.length
+    var len2 = needle.length
+    var p = 0
+    var q = 0
+    while (p < len1) {
+        if (haystack[p] == needle[q]) {
+            if (len2 == 1) {
+                return p
+            }
+            ++p
+            ++q
+        } else {
+            p -= q - 1
+            q = 0
+        }
+        if (q == len2) {
+            return p - q
+        }
+
+    }
+    return -1
+}
+
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    val strs = intArrayOf(0,1,2,2,3,0,4,2)
+    val strs = intArrayOf(0, 1, 2, 2, 3, 0, 4, 2)
     val targer = 6
     Text(
-        text = "hey ${removeElement(strs, 2)}",
+        text = "hey ${strStr("sadbutsad", "sad")}",
         modifier = modifier
     )
 
