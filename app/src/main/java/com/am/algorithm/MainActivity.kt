@@ -167,12 +167,36 @@ fun strStr(haystack: String, needle: String): Int {
     return -1
 }
 
+fun searchInsert(nums: IntArray, target: Int): Int {
+    var returnIndex = 0
+    for (i in nums.indices) {
+        if (nums.contains(target)) {
+            if (nums[i] == target) {
+                returnIndex = i
+            }
+        } else {
+            if (target > nums[i]) {
+                returnIndex++
+            }
+        }
+    }
+
+    return returnIndex
+}
+
+
+fun lengthOfLastWord(s: String): Int {
+    var strData = s.trim().split(" ").last()
+    var strLen = strData.length
+    return strLen
+}
+
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    val strs = intArrayOf(0, 1, 2, 2, 3, 0, 4, 2)
-    val targer = 6
+    val strs = intArrayOf(1, 3, 5, 6)
+    val targer = 5
     Text(
-        text = "hey ${strStr("sadbutsad", "sad")}",
+        text = "hey ${lengthOfLastWord("   fly me   to   the moon  ")}",
         modifier = modifier
     )
 
