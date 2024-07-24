@@ -191,12 +191,45 @@ fun lengthOfLastWord(s: String): Int {
     return strLen
 }
 
+
+fun plusOne(digits: IntArray): IntArray {
+    var sum = 0L
+
+    for (i in digits.indices) {
+        sum = (sum * 10) + digits[i]
+    }
+    sum += 1
+    var temp = sum.toString()
+    var returnArray = IntArray(temp.length)
+    for (i in returnArray.indices) {
+        returnArray[i] = temp[i].toString().toInt()
+    }
+    return returnArray
+}
+
+fun addBinary(a: String, b: String): String {
+    var sb: StringBuilder = StringBuilder()
+    var i = a.length - 1
+    var j = b.length - 1
+
+    var carry = 0
+    while (i >= 0 || j >= 0 || carry > 0) {
+        carry += (if (i >= 0) a[i] - '0' else 0) + (if (j >= 0) b[j] - '0' else 0)
+        sb.append(carry % 2)
+        carry /= 2
+        --i
+        --j
+    }
+
+    return sb.reverse().toString()
+}
+
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     val strs = intArrayOf(1, 3, 5, 6)
     val targer = 5
     Text(
-        text = "hey ${lengthOfLastWord("   fly me   to   the moon  ")}",
+        text = "hey ${addBinary("1010", "1011")}",
         modifier = modifier
     )
 
