@@ -12,8 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.am.algorithm.ui.theme.AlgorithmTheme
-import org.w3c.dom.Node
-import org.w3c.dom.NodeList
 import java.util.Stack
 
 class MainActivity : ComponentActivity() {
@@ -224,12 +222,29 @@ fun addBinary(a: String, b: String): String {
     return sb.reverse().toString()
 }
 
+fun mySqrt(x: Int): Int {
+    var l = 0
+    var r = x
+    while (l < r) {
+        val mid = (l + r + 1) ushr 1
+        if (mid > x / mid) {
+            r = mid - 1
+        } else {
+            l = mid
+        }
+
+    }
+    return l
+}
+
+
+
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     val strs = intArrayOf(1, 3, 5, 6)
     val targer = 5
     Text(
-        text = "hey ${addBinary("1010", "1011")}",
+        text = "hey ${mySqrt(2)}",
         modifier = modifier
     )
 
