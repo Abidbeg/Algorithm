@@ -250,12 +250,24 @@ fun climbStairs(n: Int): Int {
     return b
 }
 
+fun deleteDuplicates(head: ListNode?): ListNode? {
+    var cur: ListNode? = head
+    while (cur?.next != null) {
+        if (cur == cur.next) {
+            cur.next = cur.next!!.next
+        } else {
+            cur = cur.next
+        }
+    }
+    return head
+}
+
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     val strs = intArrayOf(1, 3, 5, 6)
     val targer = 5
     Text(
-        text = "hey ${climbStairs(2)}",
+        text = "hey ${deleteDuplicates()}",
         modifier = modifier
     )
 
