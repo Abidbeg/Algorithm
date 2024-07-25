@@ -237,14 +237,25 @@ fun mySqrt(x: Int): Int {
     return l
 }
 
-
+fun climbStairs(n: Int): Int {
+    var a = 0
+    var b = 1
+    var i = 0
+    while (i < n) {
+        var c = a + b
+        a = b
+        b = c
+        i++
+    }
+    return b
+}
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     val strs = intArrayOf(1, 3, 5, 6)
     val targer = 5
     Text(
-        text = "hey ${mySqrt(2)}",
+        text = "hey ${climbStairs(2)}",
         modifier = modifier
     )
 
