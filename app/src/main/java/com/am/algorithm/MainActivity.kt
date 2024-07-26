@@ -237,6 +237,10 @@ fun mySqrt(x: Int): Int {
     return l
 }
 
+tailrec fun factorial(n: Int, accumulator: Int = 1): Int {
+    return if (n == 0) accumulator else factorial(n - 1, n * accumulator)
+}
+
 fun climbStairs(n: Int): Int {
     var a = 0
     var b = 1
@@ -262,12 +266,25 @@ fun deleteDuplicates(head: ListNode?): ListNode? {
     return head
 }
 
+fun merge(nums1: IntArray, m: Int, nums2: IntArray, n: Int): IntArray {
+    var i = m - 1
+    var j = n - 1
+    var k = m + n - 1
+    while (j >= 0) {
+        nums1[k] = if (i >= 0 && nums1[i] > nums2[j]) nums1[i--] else nums2[j--]
+        --k
+    }
+    return nums1
+}
+
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    val strs = intArrayOf(1, 3, 5, 6)
-    val targer = 5
+    val strs = intArrayOf(0)
+    val strs2 = intArrayOf(1)
+    val targer = 0
+    val n = 1
     Text(
-        text = "hey ${deleteDuplicates()}",
+        text = "hey ${merge(strs, targer, strs2, n)}",
         modifier = modifier
     )
 
