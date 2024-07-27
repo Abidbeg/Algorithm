@@ -277,6 +277,18 @@ fun merge(nums1: IntArray, m: Int, nums2: IntArray, n: Int): IntArray {
     return nums1
 }
 
+fun convertToTitle(columnNumber: Int): String {
+    var res: StringBuilder = StringBuilder(0)
+    var number = columnNumber
+    while (number != 0) {
+        --number
+        res.append('A' + number % 26)
+        number /= 26
+
+    }
+    return res.reverse().toString()
+}
+
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     val strs = intArrayOf(0)
@@ -284,7 +296,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     val targer = 0
     val n = 1
     Text(
-        text = "hey ${merge(strs, targer, strs2, n)}",
+        text = "hey ${convertToTitle(701)}",
         modifier = modifier
     )
 
