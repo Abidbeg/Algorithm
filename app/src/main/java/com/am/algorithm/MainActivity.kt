@@ -289,14 +289,37 @@ fun convertToTitle(columnNumber: Int): String {
     return res.reverse().toString()
 }
 
+fun majorityElement(nums: IntArray): Int {
+    var count = 1
+    var i = 0
+    var major = nums[0]
+    while (i < nums.size) {
+        if (count == 0) {
+            count = 1
+            major = nums[i]
+            continue
+        }
+        if (nums[i] == major)
+            count++
+        else
+            count--
+
+        i++
+
+    }
+
+    return major
+
+}
+
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    val strs = intArrayOf(0)
+    val strs = intArrayOf(6,5,5)
     val strs2 = intArrayOf(1)
     val targer = 0
     val n = 1
     Text(
-        text = "hey ${convertToTitle(701)}",
+        text = "hey ${majorityElement(strs)}",
         modifier = modifier
     )
 
