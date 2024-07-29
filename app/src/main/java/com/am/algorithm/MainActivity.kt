@@ -314,17 +314,23 @@ fun majorityElement(nums: IntArray): Int {
 }
 
 fun titleToNumber(columnTitle: String): Int {
-
+    var ans = 0
+    var i = 0
+    while (i < columnTitle.length) {
+        ans = ans * 26 + (columnTitle[i] - 'A' + 1)
+        i++
+    }
+    return ans
 }
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    val strs = intArrayOf(2,2,1,1,1,2,2)
+    val strs = intArrayOf(2, 2, 1, 1, 1, 2, 2)
     val strs2 = intArrayOf(1)
     val targer = 0
     val n = 1
     Text(
-        text = "hey ${majorityElement(strs)}",
+        text = "hey ${titleToNumber("ABID")}",
         modifier = modifier
     )
 
