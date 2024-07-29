@@ -290,13 +290,14 @@ fun convertToTitle(columnNumber: Int): String {
 }
 
 fun majorityElement(nums: IntArray): Int {
-    var count = 1
+    var count = 0
     var i = 0
     var major = nums[0]
     while (i < nums.size) {
         if (count == 0) {
             count = 1
             major = nums[i]
+            i++
             continue
         }
         if (nums[i] == major)
@@ -312,9 +313,13 @@ fun majorityElement(nums: IntArray): Int {
 
 }
 
+fun titleToNumber(columnTitle: String): Int {
+
+}
+
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    val strs = intArrayOf(6,5,5)
+    val strs = intArrayOf(2,2,1,1,1,2,2)
     val strs2 = intArrayOf(1)
     val targer = 0
     val n = 1
